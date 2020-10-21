@@ -1,7 +1,3 @@
-variable "service_account_secret" {}
-
-variable "gcp_project_id" {}
-
 variable "resources_region" {
     default = "us-central1"
 }
@@ -20,4 +16,8 @@ variable "vm_size" {
 
 variable "vm_image" {
     default = "debian-cloud/debian-9"
+}
+
+variable "id" {
+  default = "default"
 }

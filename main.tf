@@ -1,21 +1,19 @@
 provider "google" {
-  credentials = var.service_account_secret
-  project     = var.gcp_project_id
   region      = var.resources_region
   zone        = var.resources_zone
 }
 
 resource "google_compute_network" "vpc" {
-  name                    = "network"
+  name                    = "${var.id}-network"
   auto_create_subnetworks = "true"
 }
 
 resource "google_compute_address" "ip_address" {
-  name = "vm-ip"
+  name = "${var.id}-vm-ip"
 }
 
 resource "google_compute_instance" "vm" {
-  name         = var.vm_name
+  name         = "${var.id}-${var.vm_name}"
   machine_type = var.vm_size
 
   boot_disk {
